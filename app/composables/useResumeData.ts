@@ -1,6 +1,6 @@
 export const useResumeData = () => {
   const profile = {
-    name: "Tong Li",
+    name: "Chatupond Boonlua",
     tagline:
       "Product-focused Frontend Engineer crafting clean, accessible experiences for fast-growing teams.",
     meta: ["San Francisco, CA", "tong.li@email.com", "linkedin.com/in/tongli"],
@@ -76,6 +76,30 @@ export const useResumeData = () => {
     {
       title: "Leadership",
       description: "Mentorship, roadmap planning, cross-team alignment.",
+    },
+    {
+      title: "Performance",
+      description: "Core Web Vitals, caching, image optimization.",
+    },
+    {
+      title: "Analytics",
+      description: "Product metrics, experimentation, insights dashboards.",
+    },
+    {
+      title: "Collaboration",
+      description: "Stakeholder alignment, design partnership, QA.",
+    },
+    {
+      title: "Quality",
+      description: "Testing strategy, CI automation, release readiness.",
+    },
+    {
+      title: "Platform",
+      description: "Monorepos, tooling, build pipelines, dev experience.",
+    },
+    {
+      title: "Internationalization",
+      description: "Localization workflows, RTL support, global UX.",
     },
   ];
 
