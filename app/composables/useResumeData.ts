@@ -1,6 +1,7 @@
 export const useResumeData = () => {
   const profile = {
     name: "Chatupond Boonlua",
+    nickname: "Tong",
     tagline:
       "Product-focused Frontend Engineer crafting clean, accessible experiences for fast-growing teams.",
     meta: ["San Francisco, CA", "tong.li@email.com", "linkedin.com/in/tongli"],

@@ -24,6 +24,60 @@ const { education } = useResumeData();
 </script>
 
 <style scoped>
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.section__header h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.section__header p {
+  color: var(--text-muted);
+  margin: 8px 0 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.tile {
+  background: var(--surface);
+  border-radius: 24px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tile--education {
+  justify-content: space-between;
+}
+
+.tile__title {
+  font-weight: 600;
+  margin: 0;
+}
+
+.tile__desc {
+  color: var(--text-soft);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.tile__meta {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: 13px;
+}
+
 .education__title {
   display: flex;
   align-items: center;
