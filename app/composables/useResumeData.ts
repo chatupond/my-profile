@@ -3,8 +3,27 @@ export const useResumeData = () => {
     name: "Chatupond Boonlua",
     nickname: "Tong",
     tagline:
-      "Product-focused Frontend Engineer crafting clean, accessible experiences for fast-growing teams.",
-    meta: ["San Francisco, CA", "tong.li@email.com", "linkedin.com/in/tongli"],
+      "Focused on team management and project management to drive efficiency and ensure on-time product delivery, supported by a well-designed technical architecture.",
+    meta: [
+      {
+        type: "email",
+        value: "chatupond.b@gmail.com",
+        icon: "/email.png",
+        label: "Email",
+      },
+      {
+        type: "link",
+        value: "https://www.linkedin.com/in/chatupond/",
+        icon: "/linkedin.svg",
+        label: "LinkedIn",
+      },
+      {
+        type: "link",
+        value: "https://github.com/chatupond",
+        icon: "/github.svg",
+        label: "GitHub",
+      },
+    ],
     photo: "/profile.jpg",
     actions: [
       { label: "Download PDF", variant: "primary" },

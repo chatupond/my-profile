@@ -19,9 +19,30 @@
         {{ profile.tagline }}
       </p>
       <div class="meta">
-        <template v-for="(item, index) in profile.meta" :key="item">
-          <span>{{ item }}</span>
-          <span v-if="index < profile.meta.length - 1">•</span>
+        <template v-for="(item, index) in profile.meta" :key="item.value">
+          <span v-if="item.type === 'text'">{{ item.value }}</span>
+          <a
+            v-else-if="item.type === 'email'"
+            class="meta__inline meta__link"
+            :href="`mailto:${item.value}`"
+            :aria-label="item.label"
+          >
+            <img class="meta__icon" :src="item.icon" :alt="item.label" />
+            <span class="meta__label">{{ item.value }}</span>
+          </a>
+          <a
+            v-else
+            class="meta__link"
+            :href="item.value"
+            target="_blank"
+            rel="noopener noreferrer"
+            :aria-label="item.label"
+          >
+            <img class="meta__icon" :src="item.icon" :alt="item.label" />
+            <span v-if="item.label === 'LinkedIn'" class="meta__label">LinkedIn</span>
+            <span v-else-if="item.label === 'GitHub'" class="meta__label">Github</span>
+          </a>
+          <span v-if="index < profile.meta.length - 1">/</span>
         </template>
       </div>
       <div class="actions">
@@ -147,6 +168,29 @@ onBeforeUnmount(() => {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  font-size: 14px;
+  color: var(--text-muted);
+  align-items: center;
+}
+
+.meta__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.meta__inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.meta__icon {
+  width: 22px;
+  height: 22px;
+}
+
+.meta__label {
   font-size: 14px;
   color: var(--text-muted);
 }
