@@ -13,7 +13,7 @@ export const useResumeData = () => {
 
   const currentRole = {
     label: "Current Role",
-    title: "Lead Frontend Engineer",
+    title: "Engineering Manager",
     subtitle: "Lumina Labs · 2022 — Present",
     stats: [
       { value: "12+", label: "Products shipped" },
@@ -123,14 +123,10 @@ export const useResumeData = () => {
 
   const education = [
     {
-      school: "University of California, Davis",
-      degree: "B.S. in Computer Science",
-      period: "2012 — 2016",
-    },
-    {
-      school: "Apple Design Academy",
-      degree: "Product Design for Engineers (Certificate)",
-      period: "2021",
+      school: "The University of the Thai Chamber of Commerce (UTCC)",
+      degree:
+        "Bachelor of Business Administration (B.B.A.) · Major in Business Computer · Second Class Honors",
+      period: "",
     },
   ];
 
