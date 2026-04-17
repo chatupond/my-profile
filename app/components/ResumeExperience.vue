@@ -5,18 +5,38 @@
       <p>Selected roles and impact highlights.</p>
     </div>
     <div class="timeline">
-      <article class="timeline__item" v-for="role in roles" :key="role.company">
+      <article class="timeline__item" v-for="company in roles" :key="company.company">
         <div class="timeline__meta">
-          <p class="timeline__company">{{ role.company }}</p>
-          <p class="timeline__period">{{ role.period }}</p>
+          <div class="timeline__company-row">
+            <img
+              v-if="company.logo"
+              class="timeline__company-logo"
+              :src="company.logo"
+              :alt="`${company.company} logo`"
+            />
+            <div>
+              <p class="timeline__company">{{ company.company }}</p>
+              <p class="timeline__period">{{ company.period }}</p>
+            </div>
+          </div>
         </div>
-        <span class="timeline__indicator" aria-hidden="true"></span>
         <div class="timeline__content">
-          <h3>{{ role.title }}</h3>
-          <p class="timeline__summary">{{ role.summary }}</p>
-          <ul class="timeline__list">
-            <li v-for="item in role.highlights" :key="item">{{ item }}</li>
-          </ul>
+          <div class="timeline__roles">
+            <div
+              class="timeline__role"
+              v-for="position in company.positions"
+              :key="position.title + position.period"
+            >
+              <div class="timeline__role-header">
+                <h3>{{ position.title }}</h3>
+                <span class="timeline__role-period">{{ position.period }}</span>
+              </div>
+              <p class="timeline__summary">{{ position.summary }}</p>
+              <ul class="timeline__list">
+                <li v-for="item in position.highlights" :key="item">{{ item }}</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </article>
     </div>
@@ -53,43 +73,31 @@ const { roles } = useResumeData();
 .timeline__item {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(200px, 0.4fr) 24px minmax(0, 1fr);
-  gap: 20px;
+  grid-template-columns: minmax(200px, 0.4fr) minmax(0, 1fr);
+  gap: 24px;
   padding: 24px 0;
   border-bottom: 1px solid var(--border);
-}
-
-.timeline__indicator {
-  position: relative;
-}
-
-.timeline__indicator::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background: var(--border);
-  transform: translateX(-50%);
-}
-
-.timeline__indicator::after {
-  content: "";
-  position: absolute;
-  top: 28px;
-  left: 50%;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--text);
-  box-shadow: 0 0 0 4px var(--bg);
-  transform: translateX(-50%);
 }
 
 .timeline__company {
   font-weight: 600;
   margin: 0;
+}
+
+.timeline__company-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.timeline__company-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .timeline__period {
@@ -98,9 +106,32 @@ const { roles } = useResumeData();
 }
 
 .timeline__content h3 {
-  margin: 0 0 12px;
+  margin: 0;
   font-size: 20px;
   font-weight: 600;
+}
+
+.timeline__roles {
+  display: grid;
+  gap: 32px;
+}
+
+.timeline__role {
+  display: grid;
+  gap: 8px;
+}
+
+.timeline__role-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.timeline__role-period {
+  font-size: 14px;
+  color: var(--text-muted);
 }
 
 .timeline__summary {
@@ -118,17 +149,12 @@ const { roles } = useResumeData();
 
 @media (max-width: 720px) {
   .timeline__item {
-    grid-template-columns: 1fr 20px;
+    grid-template-columns: 1fr;
   }
 
   .timeline__meta,
   .timeline__content {
     grid-column: 1;
-  }
-
-  .timeline__indicator {
-    grid-column: 2;
-    grid-row: 1 / span 2;
   }
 }
 </style>
